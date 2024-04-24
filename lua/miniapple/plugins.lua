@@ -8,9 +8,6 @@ return require('packer').startup(function(use)
   	use({
   		'folke/tokyonight.nvim',
     		as = "tokyonight",
-    		config = function()
-			vim.cmd [[colorscheme tokyonight]]
-    		end,
   	})
   	use({
 		'nvim-treesitter/nvim-treesitter',
@@ -23,7 +20,7 @@ return require('packer').startup(function(use)
 			})
 		end
   	})
-  
+	use 'chriskempson/base16-vim'
   	use {
     		'VonHeikemen/lsp-zero.nvim',
     		requires = {
@@ -81,5 +78,48 @@ return require('packer').startup(function(use)
 		end,
 	})
 	use("mbbill/undotree")
+	use({
+  "epwalsh/obsidian.nvim",
+  tag = "*",  -- recommended, use latest release instead of latest commit
+  requires = {
+    -- Required.
+    "nvim-lua/plenary.nvim",
+
+    -- see below for full list of optional dependencies 👇
+  },
+  config = function()
+    require("obsidian").setup({
+      workspaces = {
+        {
+          name = "notes",
+          path = "~/project/notes",
+        },
+      },
+
+      -- see below for full list of options 👇
+    })
+  end,
+})
+use {
+  'nvim-telescope/telescope.nvim', tag = '0.1.6',
+-- or                            , branch = '0.1.x',
+  requires = { {'nvim-lua/plenary.nvim'} },
+}
+
+use {
+	'sainnhe/sonokai',
+	as = 'sonokai',
+}
+
+use {
+	'sainnhe/gruvbox-material', as = 'gruvbox-material'
+}
+
+use {
+	'sainnhe/everforest', as = 'everforest'
+}
+use {
+	'rebelot/kanagawa.nvim'
+}
 end)
 

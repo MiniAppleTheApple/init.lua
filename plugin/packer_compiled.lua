@@ -104,13 +104,23 @@ _G.packer_plugins = {
     path = "/home/miniapple/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
+  everforest = {
+    loaded = true,
+    path = "/home/miniapple/.local/share/nvim/site/pack/packer/start/everforest",
+    url = "https://github.com/sainnhe/everforest"
+  },
   ["friendly-snippets"] = {
     loaded = true,
     path = "/home/miniapple/.local/share/nvim/site/pack/packer/start/friendly-snippets",
     url = "https://github.com/rafamadriz/friendly-snippets"
   },
+  ["gruvbox-material"] = {
+    loaded = true,
+    path = "/home/miniapple/.local/share/nvim/site/pack/packer/start/gruvbox-material",
+    url = "https://github.com/sainnhe/gruvbox-material"
+  },
   ["lsp-zero.nvim"] = {
-    config = { "\27LJ\2\2’\4\0\0\a\0\30\00076\0\0\0'\1\1\0B\0\2\0029\1\2\0'\2\3\0B\1\2\0016\1\0\0'\2\4\0B\1\2\0029\1\5\0014\2\0\0B\1\2\0016\1\0\0'\2\6\0B\1\2\0029\1\5\0015\2\b\0005\3\a\0=\3\t\0024\3\3\0009\4\n\0>\4\1\3=\3\v\2B\1\2\0016\1\0\0'\2\f\0B\1\2\0025\2\15\0009\3\r\0019\3\14\3=\3\16\0029\3\17\0009\3\18\0035\4\21\0009\5\19\0019\5\20\5\18\6\2\0B\5\2\2=\5\22\0049\5\19\0019\5\23\5\18\6\2\0B\5\2\2=\5\24\0049\5\19\0019\5\25\0055\6\26\0B\5\2\2=\5\27\0049\5\19\0019\5\28\5B\5\1\2=\5\29\4B\3\2\2K\0\1\0\14<C-Space>\rcomplete\n<C-l>\1\0\1\vselect\2\fconfirm\n<C-k>\21select_next_item\n<C-j>\1\0\0\21select_prev_item\fmapping\17cmp_mappings\rdefaults\14behaviour\1\0\0\vSelect\19SelectBehavior\bcmp\rhandlers\18default_setup\21ensure_installed\1\0\0\1\4\0\0\rtsserver\18rust_analyzer\relixirls\20mason-lspconfig\nsetup\nmason\14recommend\vpreset\rlsp-zero\frequire\0" },
+    config = { "\27LJ\2\2’\4\0\0\a\0\30\00076\0\0\0'\1\1\0B\0\2\0029\1\2\0'\2\3\0B\1\2\0016\1\0\0'\2\4\0B\1\2\0029\1\5\0014\2\0\0B\1\2\0016\1\0\0'\2\6\0B\1\2\0029\1\5\0015\2\b\0005\3\a\0=\3\t\0024\3\3\0009\4\n\0>\4\1\3=\3\v\2B\1\2\0016\1\0\0'\2\f\0B\1\2\0025\2\15\0009\3\r\0019\3\14\3=\3\16\0029\3\17\0009\3\18\0035\4\21\0009\5\19\0019\5\20\5\18\6\2\0B\5\2\2=\5\22\0049\5\19\0019\5\23\5\18\6\2\0B\5\2\2=\5\24\0049\5\19\0019\5\25\0055\6\26\0B\5\2\2=\5\27\0049\5\19\0019\5\28\5B\5\1\2=\5\29\4B\3\2\2K\0\1\0\14<C-Space>\rcomplete\n<C-y>\1\0\1\vselect\2\fconfirm\n<C-n>\21select_next_item\n<C-p>\1\0\0\21select_prev_item\fmapping\17cmp_mappings\rdefaults\14behaviour\1\0\0\vSelect\19SelectBehavior\bcmp\rhandlers\18default_setup\21ensure_installed\1\0\0\1\4\0\0\rtsserver\18rust_analyzer\relixirls\20mason-lspconfig\nsetup\nmason\14recommend\vpreset\rlsp-zero\frequire\0" },
     loaded = true,
     path = "/home/miniapple/.local/share/nvim/site/pack/packer/start/lsp-zero.nvim",
     url = "https://github.com/VonHeikemen/lsp-zero.nvim"
@@ -141,13 +151,33 @@ _G.packer_plugins = {
     path = "/home/miniapple/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
+  ["obsidian.nvim"] = {
+    config = { "\27LJ\2\2{\0\0\4\0\6\0\v6\0\0\0'\1\1\0B\0\2\0029\0\2\0005\1\4\0004\2\3\0005\3\3\0>\3\1\2=\2\5\1B\0\2\1K\0\1\0\15workspaces\1\0\0\1\0\2\tpath\20~/project/notes\tname\nnotes\nsetup\robsidian\frequire\0" },
+    loaded = true,
+    path = "/home/miniapple/.local/share/nvim/site/pack/packer/start/obsidian.nvim",
+    url = "https://github.com/epwalsh/obsidian.nvim"
+  },
   ["packer.nvim"] = {
     loaded = true,
     path = "/home/miniapple/.local/share/nvim/site/pack/packer/start/packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
   },
+  ["plenary.nvim"] = {
+    loaded = true,
+    path = "/home/miniapple/.local/share/nvim/site/pack/packer/start/plenary.nvim",
+    url = "https://github.com/nvim-lua/plenary.nvim"
+  },
+  sonokai = {
+    loaded = true,
+    path = "/home/miniapple/.local/share/nvim/site/pack/packer/start/sonokai",
+    url = "https://github.com/sainnhe/sonokai"
+  },
+  ["telescope.nvim"] = {
+    loaded = true,
+    path = "/home/miniapple/.local/share/nvim/site/pack/packer/start/telescope.nvim",
+    url = "https://github.com/nvim-telescope/telescope.nvim"
+  },
   tokyonight = {
-    config = { "\27LJ\2\2:\0\0\2\0\3\0\0056\0\0\0009\0\1\0'\1\2\0B\0\2\1K\0\1\0\27colorscheme tokyonight\bcmd\bvim\0" },
     loaded = true,
     path = "/home/miniapple/.local/share/nvim/site/pack/packer/start/tokyonight",
     url = "https://github.com/folke/tokyonight.nvim"
@@ -158,6 +188,7 @@ _G.packer_plugins = {
     url = "https://github.com/mbbill/undotree"
   },
   ["zen-mode.nvim"] = {
+    config = { "\27LJ\2\2g\0\0\4\0\a\0\v6\0\0\0'\1\1\0B\0\2\0029\0\2\0005\1\5\0005\2\3\0004\3\0\0=\3\4\2=\2\6\1B\0\2\1K\0\1\0\vwindow\1\0\0\foptions\1\0\1\nwidth\3Z\nsetup\rzen-mode\frequire\0" },
     loaded = true,
     path = "/home/miniapple/.local/share/nvim/site/pack/packer/start/zen-mode.nvim",
     url = "https://github.com/folke/zen-mode.nvim"
@@ -165,17 +196,21 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: obsidian.nvim
+time([[Config for obsidian.nvim]], true)
+try_loadstring("\27LJ\2\2{\0\0\4\0\6\0\v6\0\0\0'\1\1\0B\0\2\0029\0\2\0005\1\4\0004\2\3\0005\3\3\0>\3\1\2=\2\5\1B\0\2\1K\0\1\0\15workspaces\1\0\0\1\0\2\tpath\20~/project/notes\tname\nnotes\nsetup\robsidian\frequire\0", "config", "obsidian.nvim")
+time([[Config for obsidian.nvim]], false)
 -- Config for: nvim-treesitter
 time([[Config for nvim-treesitter]], true)
 try_loadstring("\27LJ\2\2i\0\0\3\0\6\0\t6\0\0\0'\1\1\0B\0\2\0029\0\2\0005\1\4\0005\2\3\0=\2\5\1B\0\2\1K\0\1\0\14highlight\1\0\0\1\0\1\venable\2\nsetup\28nvim-treesitter.configs\frequire\0", "config", "nvim-treesitter")
 time([[Config for nvim-treesitter]], false)
--- Config for: tokyonight
-time([[Config for tokyonight]], true)
-try_loadstring("\27LJ\2\2:\0\0\2\0\3\0\0056\0\0\0009\0\1\0'\1\2\0B\0\2\1K\0\1\0\27colorscheme tokyonight\bcmd\bvim\0", "config", "tokyonight")
-time([[Config for tokyonight]], false)
+-- Config for: zen-mode.nvim
+time([[Config for zen-mode.nvim]], true)
+try_loadstring("\27LJ\2\2g\0\0\4\0\a\0\v6\0\0\0'\1\1\0B\0\2\0029\0\2\0005\1\5\0005\2\3\0004\3\0\0=\3\4\2=\2\6\1B\0\2\1K\0\1\0\vwindow\1\0\0\foptions\1\0\1\nwidth\3Z\nsetup\rzen-mode\frequire\0", "config", "zen-mode.nvim")
+time([[Config for zen-mode.nvim]], false)
 -- Config for: lsp-zero.nvim
 time([[Config for lsp-zero.nvim]], true)
-try_loadstring("\27LJ\2\2’\4\0\0\a\0\30\00076\0\0\0'\1\1\0B\0\2\0029\1\2\0'\2\3\0B\1\2\0016\1\0\0'\2\4\0B\1\2\0029\1\5\0014\2\0\0B\1\2\0016\1\0\0'\2\6\0B\1\2\0029\1\5\0015\2\b\0005\3\a\0=\3\t\0024\3\3\0009\4\n\0>\4\1\3=\3\v\2B\1\2\0016\1\0\0'\2\f\0B\1\2\0025\2\15\0009\3\r\0019\3\14\3=\3\16\0029\3\17\0009\3\18\0035\4\21\0009\5\19\0019\5\20\5\18\6\2\0B\5\2\2=\5\22\0049\5\19\0019\5\23\5\18\6\2\0B\5\2\2=\5\24\0049\5\19\0019\5\25\0055\6\26\0B\5\2\2=\5\27\0049\5\19\0019\5\28\5B\5\1\2=\5\29\4B\3\2\2K\0\1\0\14<C-Space>\rcomplete\n<C-l>\1\0\1\vselect\2\fconfirm\n<C-k>\21select_next_item\n<C-j>\1\0\0\21select_prev_item\fmapping\17cmp_mappings\rdefaults\14behaviour\1\0\0\vSelect\19SelectBehavior\bcmp\rhandlers\18default_setup\21ensure_installed\1\0\0\1\4\0\0\rtsserver\18rust_analyzer\relixirls\20mason-lspconfig\nsetup\nmason\14recommend\vpreset\rlsp-zero\frequire\0", "config", "lsp-zero.nvim")
+try_loadstring("\27LJ\2\2’\4\0\0\a\0\30\00076\0\0\0'\1\1\0B\0\2\0029\1\2\0'\2\3\0B\1\2\0016\1\0\0'\2\4\0B\1\2\0029\1\5\0014\2\0\0B\1\2\0016\1\0\0'\2\6\0B\1\2\0029\1\5\0015\2\b\0005\3\a\0=\3\t\0024\3\3\0009\4\n\0>\4\1\3=\3\v\2B\1\2\0016\1\0\0'\2\f\0B\1\2\0025\2\15\0009\3\r\0019\3\14\3=\3\16\0029\3\17\0009\3\18\0035\4\21\0009\5\19\0019\5\20\5\18\6\2\0B\5\2\2=\5\22\0049\5\19\0019\5\23\5\18\6\2\0B\5\2\2=\5\24\0049\5\19\0019\5\25\0055\6\26\0B\5\2\2=\5\27\0049\5\19\0019\5\28\5B\5\1\2=\5\29\4B\3\2\2K\0\1\0\14<C-Space>\rcomplete\n<C-y>\1\0\1\vselect\2\fconfirm\n<C-n>\21select_next_item\n<C-p>\1\0\0\21select_prev_item\fmapping\17cmp_mappings\rdefaults\14behaviour\1\0\0\vSelect\19SelectBehavior\bcmp\rhandlers\18default_setup\21ensure_installed\1\0\0\1\4\0\0\rtsserver\18rust_analyzer\relixirls\20mason-lspconfig\nsetup\nmason\14recommend\vpreset\rlsp-zero\frequire\0", "config", "lsp-zero.nvim")
 time([[Config for lsp-zero.nvim]], false)
 
 _G._packer.inside_compile = false
