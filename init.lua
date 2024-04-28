@@ -1,3 +1,2 @@
-vim.cmd('filetype plugin on')
-vim.cmd('filetype indent off')
+vim.filetype.add({ extension = { templ = "templ" } })
 require("miniapple.remap")
