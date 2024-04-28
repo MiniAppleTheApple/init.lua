@@ -79,47 +79,57 @@ return require('packer').startup(function(use)
 	})
 	use("mbbill/undotree")
 	use({
-  "epwalsh/obsidian.nvim",
-  tag = "*",  -- recommended, use latest release instead of latest commit
-  requires = {
-    -- Required.
-    "nvim-lua/plenary.nvim",
+	  "epwalsh/obsidian.nvim",
+	  tag = "*",  -- recommended, use latest release instead of latest commit
+	  requires = {
+	    -- Required.
+	    "nvim-lua/plenary.nvim",
 
-    -- see below for full list of optional dependencies 👇
-  },
-  config = function()
-    require("obsidian").setup({
-      workspaces = {
-        {
-          name = "notes",
-          path = "~/project/notes",
-        },
-      },
+	    -- see below for full list of optional dependencies 👇
+	  },
+	  config = function()
+	    require("obsidian").setup({
+	      workspaces = {
+		{
+		  name = "notes",
+		  path = "~/project/notes",
+		},
+	      },
 
-      -- see below for full list of options 👇
-    })
-  end,
-})
-use {
-  'nvim-telescope/telescope.nvim', tag = '0.1.6',
--- or                            , branch = '0.1.x',
-  requires = { {'nvim-lua/plenary.nvim'} },
-}
+	      -- see below for full list of options 👇
+	    })
+	  end,
+	})
+	use {
+	  'nvim-telescope/telescope.nvim', tag = '0.1.6',
+	-- or                            , branch = '0.1.x',
+	  requires = { {'nvim-lua/plenary.nvim'} },
+	}
 
-use {
-	'sainnhe/sonokai',
-	as = 'sonokai',
-}
+	use {
+		'sainnhe/sonokai',
+		as = 'sonokai',
+	}
 
-use {
-	'sainnhe/gruvbox-material', as = 'gruvbox-material'
-}
+	use {
+		'sainnhe/gruvbox-material', as = 'gruvbox-material'
+	}
 
-use {
-	'sainnhe/everforest', as = 'everforest'
-}
-use {
-	'rebelot/kanagawa.nvim'
-}
+	use {
+		'sainnhe/everforest', as = 'everforest'
+	}
+	use {
+		'rebelot/kanagawa.nvim'
+	}
+	use {
+		'kdheepak/lazygit.nvim',
+		requires = {
+			"nvim-lua/plenary.nvim",
+			"nvim-lua/telescope.nvim",
+		},
+		config = function()
+			require("telescope").load_extension("lazygit")
+		end,
+	}
 end)
 
