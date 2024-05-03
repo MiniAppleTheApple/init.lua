@@ -79,6 +79,21 @@ _G.packer_plugins = {
     path = "/home/miniapple/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
+  ["ayu-vim"] = {
+    loaded = true,
+    path = "/home/miniapple/.local/share/nvim/site/pack/packer/start/ayu-vim",
+    url = "https://github.com/ayu-theme/ayu-vim"
+  },
+  ["base16-vim"] = {
+    loaded = true,
+    path = "/home/miniapple/.local/share/nvim/site/pack/packer/start/base16-vim",
+    url = "https://github.com/chriskempson/base16-vim"
+  },
+  carbonized = {
+    loaded = true,
+    path = "/home/miniapple/.local/share/nvim/site/pack/packer/start/carbonized",
+    url = "https://github.com/nightsense/carbonized"
+  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/home/miniapple/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -119,6 +134,22 @@ _G.packer_plugins = {
     path = "/home/miniapple/.local/share/nvim/site/pack/packer/start/gruvbox-material",
     url = "https://github.com/sainnhe/gruvbox-material"
   },
+  ["image.nvim"] = {
+    loaded = true,
+    path = "/home/miniapple/.local/share/nvim/site/pack/packer/start/image.nvim",
+    url = "https://github.com/3rd/image.nvim"
+  },
+  ["kanagawa.nvim"] = {
+    loaded = true,
+    path = "/home/miniapple/.local/share/nvim/site/pack/packer/start/kanagawa.nvim",
+    url = "https://github.com/rebelot/kanagawa.nvim"
+  },
+  ["lazygit.nvim"] = {
+    config = { "\27LJ\2\2L\0\0\2\0\4\0\a6\0\0\0'\1\1\0B\0\2\0029\0\2\0'\1\3\0B\0\2\1K\0\1\0\flazygit\19load_extension\14telescope\frequire\0" },
+    loaded = true,
+    path = "/home/miniapple/.local/share/nvim/site/pack/packer/start/lazygit.nvim",
+    url = "https://github.com/kdheepak/lazygit.nvim"
+  },
   ["lsp-zero.nvim"] = {
     config = { "\27LJ\2\2’\4\0\0\a\0\30\00076\0\0\0'\1\1\0B\0\2\0029\1\2\0'\2\3\0B\1\2\0016\1\0\0'\2\4\0B\1\2\0029\1\5\0014\2\0\0B\1\2\0016\1\0\0'\2\6\0B\1\2\0029\1\5\0015\2\b\0005\3\a\0=\3\t\0024\3\3\0009\4\n\0>\4\1\3=\3\v\2B\1\2\0016\1\0\0'\2\f\0B\1\2\0025\2\15\0009\3\r\0019\3\14\3=\3\16\0029\3\17\0009\3\18\0035\4\21\0009\5\19\0019\5\20\5\18\6\2\0B\5\2\2=\5\22\0049\5\19\0019\5\23\5\18\6\2\0B\5\2\2=\5\24\0049\5\19\0019\5\25\0055\6\26\0B\5\2\2=\5\27\0049\5\19\0019\5\28\5B\5\1\2=\5\29\4B\3\2\2K\0\1\0\14<C-Space>\rcomplete\n<C-y>\1\0\1\vselect\2\fconfirm\n<C-n>\21select_next_item\n<C-p>\1\0\0\21select_prev_item\fmapping\17cmp_mappings\rdefaults\14behaviour\1\0\0\vSelect\19SelectBehavior\bcmp\rhandlers\18default_setup\21ensure_installed\1\0\0\1\4\0\0\rtsserver\18rust_analyzer\relixirls\20mason-lspconfig\nsetup\nmason\14recommend\vpreset\rlsp-zero\frequire\0" },
     loaded = true,
@@ -134,6 +165,16 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/miniapple/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
+  },
+  ["neo-tree.nvim"] = {
+    loaded = true,
+    path = "/home/miniapple/.local/share/nvim/site/pack/packer/start/neo-tree.nvim",
+    url = "https://github.com/nvim-neo-tree/neo-tree.nvim"
+  },
+  ["nui.nvim"] = {
+    loaded = true,
+    path = "/home/miniapple/.local/share/nvim/site/pack/packer/start/nui.nvim",
+    url = "https://github.com/MunifTanjim/nui.nvim"
   },
   ["nvim-cmp"] = {
     loaded = true,
@@ -151,6 +192,17 @@ _G.packer_plugins = {
     path = "/home/miniapple/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
+  ["nvim-web-devicons"] = {
+    loaded = true,
+    path = "/home/miniapple/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
+    url = "https://github.com/nvim-tree/nvim-web-devicons"
+  },
+  ["nvim-window-picker"] = {
+    config = { "\27LJ\2\2ç\1\0\0\5\0\f\0\0156\0\0\0'\1\1\0B\0\2\0029\0\2\0005\1\n\0005\2\3\0005\3\5\0005\4\4\0=\4\6\0035\4\a\0=\4\b\3=\3\t\2=\2\v\1B\0\2\1K\0\1\0\17filter_rules\1\0\0\abo\fbuftype\1\3\0\0\rterminal\rquickfix\rfiletype\1\0\0\1\4\0\0\rneo-tree\19neo-tree-popup\vnotify\1\0\2\24include_current_win\1\19autoselect_one\2\nsetup\18window-picker\frequire\0" },
+    loaded = true,
+    path = "/home/miniapple/.local/share/nvim/site/pack/packer/start/nvim-window-picker",
+    url = "https://github.com/s1n7ax/nvim-window-picker"
+  },
   ["obsidian.nvim"] = {
     config = { "\27LJ\2\2{\0\0\4\0\6\0\v6\0\0\0'\1\1\0B\0\2\0029\0\2\0005\1\4\0004\2\3\0005\3\3\0>\3\1\2=\2\5\1B\0\2\1K\0\1\0\15workspaces\1\0\0\1\0\2\tpath\20~/project/notes\tname\nnotes\nsetup\robsidian\frequire\0" },
     loaded = true,
@@ -162,6 +214,11 @@ _G.packer_plugins = {
     path = "/home/miniapple/.local/share/nvim/site/pack/packer/start/packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
   },
+  ["papercolor-theme"] = {
+    loaded = true,
+    path = "/home/miniapple/.local/share/nvim/site/pack/packer/start/papercolor-theme",
+    url = "https://github.com/NLKNguyen/papercolor-theme"
+  },
   ["plenary.nvim"] = {
     loaded = true,
     path = "/home/miniapple/.local/share/nvim/site/pack/packer/start/plenary.nvim",
@@ -171,6 +228,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/miniapple/.local/share/nvim/site/pack/packer/start/sonokai",
     url = "https://github.com/sainnhe/sonokai"
+  },
+  ["space-vim-dark"] = {
+    loaded = true,
+    path = "/home/miniapple/.local/share/nvim/site/pack/packer/start/space-vim-dark",
+    url = "https://github.com/liuchengxu/space-vim-dark"
   },
   ["telescope.nvim"] = {
     loaded = true,
@@ -187,6 +249,21 @@ _G.packer_plugins = {
     path = "/home/miniapple/.local/share/nvim/site/pack/packer/start/undotree",
     url = "https://github.com/mbbill/undotree"
   },
+  ["vim-colors-lucid"] = {
+    loaded = true,
+    path = "/home/miniapple/.local/share/nvim/site/pack/packer/start/vim-colors-lucid",
+    url = "https://github.com/cseelus/vim-colors-lucid"
+  },
+  ["vim-dogrun"] = {
+    loaded = true,
+    path = "/home/miniapple/.local/share/nvim/site/pack/packer/start/vim-dogrun",
+    url = "https://github.com/wadackel/vim-dogrun"
+  },
+  ["vim-one"] = {
+    loaded = true,
+    path = "/home/miniapple/.local/share/nvim/site/pack/packer/start/vim-one",
+    url = "https://github.com/rakr/vim-one"
+  },
   ["zen-mode.nvim"] = {
     config = { "\27LJ\2\2g\0\0\4\0\a\0\v6\0\0\0'\1\1\0B\0\2\0029\0\2\0005\1\5\0005\2\3\0004\3\0\0=\3\4\2=\2\6\1B\0\2\1K\0\1\0\vwindow\1\0\0\foptions\1\0\1\nwidth\3Z\nsetup\rzen-mode\frequire\0" },
     loaded = true,
@@ -196,14 +273,22 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: obsidian.nvim
-time([[Config for obsidian.nvim]], true)
-try_loadstring("\27LJ\2\2{\0\0\4\0\6\0\v6\0\0\0'\1\1\0B\0\2\0029\0\2\0005\1\4\0004\2\3\0005\3\3\0>\3\1\2=\2\5\1B\0\2\1K\0\1\0\15workspaces\1\0\0\1\0\2\tpath\20~/project/notes\tname\nnotes\nsetup\robsidian\frequire\0", "config", "obsidian.nvim")
-time([[Config for obsidian.nvim]], false)
 -- Config for: nvim-treesitter
 time([[Config for nvim-treesitter]], true)
 try_loadstring("\27LJ\2\2i\0\0\3\0\6\0\t6\0\0\0'\1\1\0B\0\2\0029\0\2\0005\1\4\0005\2\3\0=\2\5\1B\0\2\1K\0\1\0\14highlight\1\0\0\1\0\1\venable\2\nsetup\28nvim-treesitter.configs\frequire\0", "config", "nvim-treesitter")
 time([[Config for nvim-treesitter]], false)
+-- Config for: lazygit.nvim
+time([[Config for lazygit.nvim]], true)
+try_loadstring("\27LJ\2\2L\0\0\2\0\4\0\a6\0\0\0'\1\1\0B\0\2\0029\0\2\0'\1\3\0B\0\2\1K\0\1\0\flazygit\19load_extension\14telescope\frequire\0", "config", "lazygit.nvim")
+time([[Config for lazygit.nvim]], false)
+-- Config for: obsidian.nvim
+time([[Config for obsidian.nvim]], true)
+try_loadstring("\27LJ\2\2{\0\0\4\0\6\0\v6\0\0\0'\1\1\0B\0\2\0029\0\2\0005\1\4\0004\2\3\0005\3\3\0>\3\1\2=\2\5\1B\0\2\1K\0\1\0\15workspaces\1\0\0\1\0\2\tpath\20~/project/notes\tname\nnotes\nsetup\robsidian\frequire\0", "config", "obsidian.nvim")
+time([[Config for obsidian.nvim]], false)
+-- Config for: nvim-window-picker
+time([[Config for nvim-window-picker]], true)
+try_loadstring("\27LJ\2\2ç\1\0\0\5\0\f\0\0156\0\0\0'\1\1\0B\0\2\0029\0\2\0005\1\n\0005\2\3\0005\3\5\0005\4\4\0=\4\6\0035\4\a\0=\4\b\3=\3\t\2=\2\v\1B\0\2\1K\0\1\0\17filter_rules\1\0\0\abo\fbuftype\1\3\0\0\rterminal\rquickfix\rfiletype\1\0\0\1\4\0\0\rneo-tree\19neo-tree-popup\vnotify\1\0\2\24include_current_win\1\19autoselect_one\2\nsetup\18window-picker\frequire\0", "config", "nvim-window-picker")
+time([[Config for nvim-window-picker]], false)
 -- Config for: zen-mode.nvim
 time([[Config for zen-mode.nvim]], true)
 try_loadstring("\27LJ\2\2g\0\0\4\0\a\0\v6\0\0\0'\1\1\0B\0\2\0029\0\2\0005\1\5\0005\2\3\0004\3\0\0=\3\4\2=\2\6\1B\0\2\1K\0\1\0\vwindow\1\0\0\foptions\1\0\1\nwidth\3Z\nsetup\rzen-mode\frequire\0", "config", "zen-mode.nvim")

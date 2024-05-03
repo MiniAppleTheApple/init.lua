@@ -189,5 +189,11 @@ return require('packer').startup(function(use)
 	use {
 		'liuchengxu/space-vim-dark'
 	}
+	use {
+		'rakr/vim-one'
+	}
+	use {
+		'tyrannicaltoucan/vim-deep-space'
+	}
 end)
 

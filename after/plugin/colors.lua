@@ -52,10 +52,15 @@ function space_vim()
 	vim.cmd [[colorscheme space-vim-dark]]
 end
 
+function deep_space()
+	vim.cmd [[colorscheme deep-space]]
+end
+
 function random_select(list)
 	return list[math.floor(math.random() * #list) + 1]
 end
+-- local f = random_select({sonokai, gruvbox_material, tomorrow, everforest, kanagawa, one_dark_pro, ayu, dogrun, space_vim})
+-- f()
 
-local f = random_select({sonokai, gruvbox_material, tomorrow, everforest, kanagawa, one_dark_pro, ayu, dogrun, papercolor, lucid, space_vim})
-f()
+deep_space()
 
