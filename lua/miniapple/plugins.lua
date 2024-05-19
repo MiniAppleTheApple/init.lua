@@ -184,17 +184,14 @@ return require('packer').startup(function(use)
 		'liuchengxu/space-vim-dark'
 	}
 	use {
-		'rakr/vim-one'
-	}
-	use {
 		'tyrannicaltoucan/vim-deep-space'
-	}
-
-	use {
-		'ajmwagar/vim-deus'
 	}
 	use {
 		'lifepillar/vim-solarized8'
+	}
+	use {
+		"rose-pine/neovim",
+		as = "rose-pine",
 	}
 end)
 

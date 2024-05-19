@@ -26,10 +26,6 @@ function kanagawa()
 	vim.cmd [[colorscheme kanagawa]]
 end
 
-function one_dark_pro()
-	vim.cmd [[colorscheme one]]
-end
-
 function ayu()
 	vim.api.nvim_exec("let ayucolor='mirage'", true)
 	vim.cmd [[colorscheme ayu]]
@@ -47,12 +43,12 @@ function deep_space()
 	vim.cmd [[colorscheme deep-space]]
 end
 
-function deus()
-	vim.cmd [[colorscheme deus]]
-end
-
 function solarized()
 	vim.cmd [[colorscheme solarized8]]
+end
+
+function rose_pine()
+	vim.cmd [[colorscheme rose-pine-moon]]
 end
 
 function random_select(list)
@@ -62,5 +58,5 @@ end
 -- local f = random_select({sonokai, gruvbox_material, tomorrow, everforest, kanagawa, one_dark_pro, ayu, dogrun, space_vim})
 -- f()
 
-ayu()
+rose_pine()
 
