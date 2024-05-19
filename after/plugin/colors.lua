@@ -39,15 +39,6 @@ function dogrun()
 	vim.cmd [[colorscheme dogrun]]
 end
 
-function papercolor()
-	vim.api.nvim_exec("set t_Co=256", true)
-	vim.cmd [[colorscheme PaperColor]]
-end
-
-function lucid()
-	vim.cmd [[colorscheme lucid]]
-end
-
 function space_vim()
 	vim.cmd [[colorscheme space-vim-dark]]
 end
@@ -56,11 +47,20 @@ function deep_space()
 	vim.cmd [[colorscheme deep-space]]
 end
 
+function deus()
+	vim.cmd [[colorscheme deus]]
+end
+
+function solarized()
+	vim.cmd [[colorscheme solarized8]]
+end
+
 function random_select(list)
 	return list[math.floor(math.random() * #list) + 1]
 end
+
 -- local f = random_select({sonokai, gruvbox_material, tomorrow, everforest, kanagawa, one_dark_pro, ayu, dogrun, space_vim})
 -- f()
 
-deep_space()
+ayu()
 

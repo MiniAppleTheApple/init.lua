@@ -181,12 +181,6 @@ return require('packer').startup(function(use)
 		'wadackel/vim-dogrun'	
 	}
 	use {
-		'NLKNguyen/papercolor-theme'
-	}
-	use {
-		'cseelus/vim-colors-lucid'
-	}
-	use {
 		'liuchengxu/space-vim-dark'
 	}
 	use {
@@ -194,6 +188,13 @@ return require('packer').startup(function(use)
 	}
 	use {
 		'tyrannicaltoucan/vim-deep-space'
+	}
+
+	use {
+		'ajmwagar/vim-deus'
+	}
+	use {
+		'lifepillar/vim-solarized8'
 	}
 end)
 
