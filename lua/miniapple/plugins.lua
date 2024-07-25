@@ -195,5 +195,9 @@ return require('packer').startup(function(use)
 	use 'ribru17/bamboo.nvim'
 	use "oxfist/night-owl.nvim" 
 	use 'sainnhe/edge'
+	use {
+	  'nvim-lualine/lualine.nvim',
+	  requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+  	}
 end)
 
