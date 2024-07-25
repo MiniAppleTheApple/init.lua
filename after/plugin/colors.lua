@@ -72,8 +72,12 @@ function night_owl()
 	vim.cmd [[colorscheme night-owl]]
 end
 
+function nordic()
+	vim.cmd [[colorscheme nordic]]
+end
+
 function random_select(list)
 	return list[math.floor(math.random() * #list) + 1]
 end
 
-gruvbox()
+nordic()
