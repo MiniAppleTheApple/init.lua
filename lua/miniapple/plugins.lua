@@ -200,5 +200,16 @@ return require('packer').startup(function(use)
 	  requires = { 'nvim-tree/nvim-web-devicons', opt = true }
   	}
 	use 'AlexvZyl/nordic.nvim'
+	use {
+		'ab-dx/ares.nvim',
+		requires = {
+			'rktjmp/lush.nvim'
+		},
+	}
+	use 'junegunn/seoul256.vim'
+	use 'cocopon/iceberg.vim'
+	use 'folke/trouble.nvim'
+	use 'folke/todo-comments.nvim'
+	use 'stevearc/aerial.nvim'
 end)
 
