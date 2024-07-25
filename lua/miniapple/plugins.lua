@@ -20,7 +20,6 @@ return require('packer').startup(function(use)
 			})
 		end
   	})
-	use 'chriskempson/base16-vim'
   	use {
     		'VonHeikemen/lsp-zero.nvim',
     		requires = {
@@ -178,14 +177,9 @@ return require('packer').startup(function(use)
 		'ayu-theme/ayu-vim'
 	}
 	use {
-		'wadackel/vim-dogrun'	
+		'wadackel/vim-dogrun'
 	}
-	use {
-		'liuchengxu/space-vim-dark'
-	}
-	use {
-		'tyrannicaltoucan/vim-deep-space'
-	}
+	
 	use {
 		'lifepillar/vim-solarized8'
 	}
@@ -193,5 +187,13 @@ return require('packer').startup(function(use)
 		"rose-pine/neovim",
 		as = "rose-pine",
 	}
+	use {
+		"morhetz/gruvbox"
+	}
+	use 'navarasu/onedark.nvim'
+	use 'shaunsingh/nord.nvim'
+	use 'ribru17/bamboo.nvim'
+	use "oxfist/night-owl.nvim" 
+	use 'sainnhe/edge'
 end)
 
