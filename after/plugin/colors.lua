@@ -76,10 +76,6 @@ function nordic()
 	vim.cmd [[colorscheme nordic]]
 end
 
-function ares()
-	vim.cmd [[colorscheme ares]]
-end
-
 function seoul()
 	vim.g.seoul256_background = 234
 	vim.cmd [[colorscheme seoul256]]
@@ -93,4 +89,4 @@ function random_select(list)
 	return list[math.floor(math.random() * #list) + 1]
 end
 
-iceberg()
+ares()
