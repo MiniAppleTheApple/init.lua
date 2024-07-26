@@ -46,6 +46,7 @@ end
 
 function gruvbox()
 	vim.g.gruvbox_italic = 1
+	vim.g.gruvbox_contrast_dark = 'soft'
 	vim.cmd [[colorscheme gruvbox]]
 end
 
@@ -85,8 +86,12 @@ function iceberg()
 	vim.cmd [[colorscheme iceberg]]
 end
 
+function oxocarbon()
+	vim.cmd [[colorscheme oxocarbon]]
+end
+
 function random_select(list)
 	return list[math.floor(math.random() * #list) + 1]
 end
 
-ares()
+gruvbox()
