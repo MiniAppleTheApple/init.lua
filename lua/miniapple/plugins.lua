@@ -205,5 +205,9 @@ return require('packer').startup(function(use)
 	use 'folke/trouble.nvim'
 	use 'folke/todo-comments.nvim'
 	use 'stevearc/aerial.nvim'
+	use 'andweeb/presence.nvim'
+	use 'akinsho/toggleterm.nvim'
+	use 'nyoom-engineering/oxocarbon.nvim'
+	use {'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons'}
 end)
 
