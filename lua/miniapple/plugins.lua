@@ -102,7 +102,7 @@ return require('packer').startup(function(use)
 	use {
 	  'nvim-telescope/telescope.nvim', tag = '0.1.6',
 	-- or                            , branch = '0.1.x',
-	  requires = { {'nvim-lua/plenary.nvim'} },
+	  requires = { {'nvim-lua/plenary.nvim'}, "andrew-george/telescope-themes"},
 	}
 
 	use {
@@ -173,9 +173,7 @@ return require('packer').startup(function(use)
 			require("neo-tree").paste_default_config()
 		end
 	}
-	use {
-		'ayu-theme/ayu-vim'
-	}
+	use 'Shatur/neovim-ayu'
 	use {
 		'wadackel/vim-dogrun'
 	}
