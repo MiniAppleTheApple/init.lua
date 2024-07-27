@@ -1,3 +1,3 @@
 require("presence").setup({
-	log_level  = "debug"
+	log_level = "debug"
 })
