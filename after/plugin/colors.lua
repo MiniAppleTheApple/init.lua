@@ -24,4 +24,4 @@ vim.g.edge_better_performance = 1
 -- seoul
 vim.g.seoul256_background = 234
 
-vim.cmd[[colorscheme gruvbox]]
+require("current-theme")
