@@ -207,5 +207,7 @@ return require('packer').startup(function(use)
 	use 'akinsho/toggleterm.nvim'
 	use 'nyoom-engineering/oxocarbon.nvim'
 	use {'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons'}
+	use 'folke/which-key.nvim'
+	use 'tadmccorkle/markdown.nvim'
 end)
 
