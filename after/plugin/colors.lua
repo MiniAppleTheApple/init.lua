@@ -18,10 +18,20 @@ require("ayu").setup({
 -- gruvbox
 vim.g.gruvbox_italic = 1
 vim.g.gruvbox_contrast_dark = 'soft'
+
+require('gruvbox').setup({
+	contrast = "medium"
+})
 -- edge
 vim.g.edge_style = 'aura'
 vim.g.edge_better_performance = 1
 -- seoul
 vim.g.seoul256_background = 234
+
+require("neomodern").setup({
+	style = "darkforest",
+})
+
+require("nightfall").setup()
 
 require("current-theme")
