@@ -5,6 +5,7 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function(use)
   -- Packer can manage itself
 	use 'wbthomason/packer.nvim'
+	use "nvim-lua/plenary.nvim"
   	use({
   		'folke/tokyonight.nvim',
     		as = "tokyonight",
@@ -83,21 +84,7 @@ return require('packer').startup(function(use)
 	  requires = {
 	    -- Required.
 	    "nvim-lua/plenary.nvim",
-
-	    -- see below for full list of optional dependencies 👇
 	  },
-	  config = function()
-	    require("obsidian").setup({
-	      workspaces = {
-		{
-		  name = "notes",
-		  path = "~/project/notes",
-		},
-	      },
-
-	      -- see below for full list of options 👇
-	    })
-	  end,
 	})
 	use {
 	  'nvim-telescope/telescope.nvim', tag = '0.1.6',
@@ -186,10 +173,8 @@ return require('packer').startup(function(use)
 		as = "rose-pine",
 	}
 	use {
-		"morhetz/gruvbox"
+		'ellisonleao/gruvbox.nvim'
 	}
-	use 'navarasu/onedark.nvim'
-	use 'shaunsingh/nord.nvim'
 	use 'ribru17/bamboo.nvim'
 	use "oxfist/night-owl.nvim" 
 	use 'sainnhe/edge'
@@ -204,10 +189,46 @@ return require('packer').startup(function(use)
 	use 'folke/todo-comments.nvim'
 	use 'stevearc/aerial.nvim'
 	use 'andweeb/presence.nvim'
-	use 'akinsho/toggleterm.nvim'
 	use 'nyoom-engineering/oxocarbon.nvim'
 	use {'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons'}
 	use 'folke/which-key.nvim'
-	use 'tadmccorkle/markdown.nvim'
+	use 'profesorpaiche/toytiza.nvim'
+	use 'natecraddock/workspaces.nvim'
+	use 'olimorris/onedarkpro.nvim'
+	use 'xero/miasma.nvim'
+	use 'EdenEast/nightfox.nvim'
+	use 'vague2k/vague.nvim'
+	use 'cdmill/neomodern.nvim'
+	use {
+		'zenbones-theme/zenbones.nvim',
+		requires = "rktjmp/lush.nvim"
+	}
+	use 'echasnovski/mini.nvim'
+	use({
+	    'MeanderingProgrammer/render-markdown.nvim',
+	    after = { 'nvim-treesitter' },
+	    requires = { 'echasnovski/mini.nvim', opt = true }, -- if you use the mini.nvim suite
+	    -- requires = { 'echasnovski/mini.icons', opt = true }, -- if you use standalone mini plugins
+	    -- requires = { 'nvim-tree/nvim-web-devicons', opt = true }, -- if you prefer nvim-web-devicons
+	    config = function()
+        	require('render-markdown').setup({})
+	    end,
+	})
+	use {
+		'folke/noice.nvim',
+		requires = {
+			"MunifTanjim/nui.nvim",
+			"rcarriga/nvim-notify",
+		}
+	}
+	use 'comfysage/evergarden'
+	use "lukas-reineke/indent-blankline.nvim"
+	use "eldritch-theme/eldritch.nvim"
+	use "2giosangmitom/nightfall.nvim"
+	use "oneslash/helix-nvim"
+	use "lunarvim/horizon.nvim"
+	use "lunarvim/synthwave84.nvim"
+	use "haystackandroid/snow"
+	use "haystackandroid/carbonized"
 end)
 
