@@ -42,7 +42,124 @@ end
 
 
 return {
-	{"folke/tokyonight.nvim"},
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		name = "ibl",
+		opts = {},
+	},
+	{
+		'akinsho/bufferline.nvim',
+		lazy = false,
+		version = "*",
+		requires = {
+			{'nvim-tree/nvim-web-devicons'}
+		},
+		opts = {
+			options = {
+				offsets = {
+					{
+						filetype = "neo-tree",
+						text = "File Explorer",
+						text_align = "left",
+						separator = true
+					}
+				}
+			}
+		},
+		keys = {
+			{"<S-h>", "<cmd>bprevious<cr>", desc = "Prev Buffer"},
+			{"<S-l>", "<cmd>bnext<cr>", desc = "Next Buffer"},
+			{"[b", "<cmd>bprevious<cr>", desc = "Prev Buffer"},
+			{"]b", "<cmd>bnext<cr>", desc = "Next Buffer"},
+			{"<leader>bd", bufremove, desc = "Delete Buffer"},
+			{"<leader>bD", "<cmd>:bd<cr>", desc = "Delete Buffer and Window"},
+		},
+	},
+
+	{
+		'folke/noice.nvim',
+		opts = {},
+		dependencies = {
+			{"MunifTanjim/nui.nvim"},
+			{
+				"rcarriga/nvim-notify",
+				opts = {
+					background_colour = "#000000",
+				}
+			},
+		}
+	},
+	{"numToStr/Comment.nvim", opts = {}},
+	{'echasnovski/mini.nvim'},
+	{
+		'MeanderingProgrammer/render-markdown.nvim',
+		opts = {},
+		after = { 'nvim-treesitter'},
+		requires = { 
+			{'echasnovski/mini.nvim',
+			opt = true, -- if you use the mini.nvim suite}
+		    -- requires = { 'echasnovski/mini.icons', opt = true }, -- if you use standalone mini plugins
+		    -- requires = { 'nvim-tree/nvim-web-devicons', opt = true }, -- if you prefer nvim-web-devicons
+			config = function()
+				require('render-markdown').setup({})
+			end}
+		},
+	},
+	{
+		'folke/which-key.nvim',
+		lazy = false,
+		keys = {
+			{
+				"<leader>?",
+				function()
+					require("which-key").show({ global = true })
+				end,
+				{}
+			}
+		},
+	},
+	{'profesorpaiche/toytiza.nvim'},
+	{
+		'natecraddock/workspaces.nvim',
+		keys = {
+			{"<S-w>", ":WorkspacesOpen "}
+		}
+	},
+	{
+		'folke/todo-comments.nvim',
+		opts = {
+			highlight = {
+				pattern = [[.*<(KEYWORDS)\s*]],
+			},
+			search = {
+				pattern = [[\b(KEYWORDS)\b]],
+			}
+		}
+	},
+	{
+		'stevearc/aerial.nvim',
+		opts = {
+			-- optionally use on_attach to set keymaps when aerial has attached to a buffer
+			on_attach = function(bufnr)
+				-- Jump forwards/backwards with '{' and '}'
+				vim.keymap.set("n", "{", "<cmd>AerialPrev<CR>", { buffer = bufnr })
+				vim.keymap.set("n", "}", "<cmd>AerialNext<CR>", { buffer = bufnr })
+			end,
+		},
+		keys = {
+			{"<leader>a", "<cmd>AerialToggle!<CR>", desc = "Open Aerial"},
+		}
+},
+	{
+		'andweeb/presence.nvim',
+		opts = {}
+	},
+	{
+		"nvim-lualine/lualine.nvim",
+		opts = {},
+		dependencies = { 'nvim-tree/nvim-web-devicons'},
+	},
+	{'lunacookies/vim-substrata'},
 	{
 		"nvim-treesitter/nvim-treesitter",
 		config = function()
@@ -239,34 +356,6 @@ return {
 		end,
 	},
 	{
-		'sainnhe/sonokai',
-		name = 'sonokai',
-		config = function()
-			vim.g.sonokai_style = 'andromeda'
-			vim.g.sonokai_better_performance = 1
-		end
-	},
-	{
-		'sainnhe/gruvbox-material',
-		name = 'gruvbox-material',
-		config = function()
-			vim.g.gruvbox_material_deisable_italic_comment = 1
-			vim.g.gruvbox_material_foreground = 'material'
-			vim.g.gruvbox_material_background = 'soft'
-			vim.g.gruvbox_material_better_performance = 1
-		end,
-	},
-	{
-		'sainnhe/everforest',
-		name = 'everforest',
-		config = function()
-			vim.g.everfoest_background = 'medium'
-		end
-	},
-	{
-		'rebelot/kanagawa.nvim'
-	},
-	{
 		'kdheepak/lazygit.nvim',
 		dependencies = {
 			{"nvim-lua/plenary.nvim"},
@@ -326,21 +415,32 @@ return {
 			vim.keymap.set("n", "<leader>pv", ":Neotree source=filesystem reveal=true position=current toggle=true<CR>")
 		end,
 	},
+
+	--- Themes
 	{
 		"Shatur/neovim-ayu",
+		priority = 1000,
 		name = "ayu",
 		opts = {
 			mirage = true
 		}
 	},
-	{"wadackel/vim-dogrun"},
-	{"lifepillar/vim-solarized8"},
+	{
+		"wadackel/vim-dogrun",
+		priority = 1000,
+	},
+	{
+		"lifepillar/vim-solarized8",
+		priority = 1000,
+	},
 	{
 		"rose-pine/neovim",
 		name = "rose-pine",
+		priority = 1000,
 	},
 	{
 		"ellisonleao/gruvbox.nvim",
+		priority = 1000,
 		opts = {
 			contrast = "medium",
 			overrides = {
@@ -359,165 +459,150 @@ return {
 			},
 		}
 	},
-	{"ribru17/bamboo.nvim"},
-	{"oxfist/night-owl.nvim"},
+	{
+		"ribru17/bamboo.nvim",
+		priority = 1000,
+	},
+	{
+		"oxfist/night-owl.nvim",
+		priority = 1000,
+	},
 	{
 		"sainnhe/edge",
+		priority = 1000,
 		config = function()
 			vim.g.edge_style = 'aura'
 			vim.g.edge_better_performance = 1
 		end
 	},
 	{
-		"nvim-lualine/lualine.nvim",
-		opts = {},
-		dependencies = { 'nvim-tree/nvim-web-devicons'},
+		"AlexvZyl/nordic.nvim",
+		priority = 1000,
 	},
-	{"AlexvZyl/nordic.nvim"},
-	{"junegunn/seoul256.vim"},
-	{'cocopon/iceberg.vim'},
+	{
+		"junegunn/seoul256.vim",
+		priority = 1000,
+	},
+	{
+		'cocopon/iceberg.vim',
+		priority = 1000,
+	},
 	{
 		'folke/trouble.nvim',
+		opts = {},
 		keys = {
 			{"<leader>xx", ":Trouble diagnostics toggle<CR>"},
 			{"<leader>xt", ":Trouble todo<CR>"},
 		},
 	},
 	{
-		'folke/todo-comments.nvim',
-		opts = {
-			highlight = {
-				pattern = [[.*<(KEYWORDS)\s*]],
-			},
-			search = {
-				pattern = [[\b(KEYWORDS)\b]],
-			}
-		}
+		'nyoom-engineering/oxocarbon.nvim',
+		priority = 1000,
 	},
 	{
-		'stevearc/aerial.nvim',
-		opts = {
-			-- optionally use on_attach to set keymaps when aerial has attached to a buffer
-			on_attach = function(bufnr)
-				-- Jump forwards/backwards with '{' and '}'
-				vim.keymap.set("n", "{", "<cmd>AerialPrev<CR>", { buffer = bufnr })
-				vim.keymap.set("n", "}", "<cmd>AerialNext<CR>", { buffer = bufnr })
-			end,
-		},
-		keys = {
-			{"<leader>a", "<cmd>AerialToggle!<CR>", desc = "Open Aerial"},
-		}
-},
-	{
-		'andweeb/presence.nvim',
-		opts = {}
-	},
-	{'nyoom-engineering/oxocarbon.nvim'},
-	{
-		'akinsho/bufferline.nvim',
-		version = "*",
-		requires = {
-			{'nvim-tree/nvim-web-devicons'}
-		},
-		opts = {
-			options = {
-				offsets = {
-					{
-						filetype = "neo-tree",
-						text = "File Explorer",
-						text_align = "left",
-						separator = true
-					}
-				}
-			}
-		},
-		keys = {
-			{"<S-h>", "<cmd>bprevious<cr>", desc = "Prev Buffer"},
-			{"<S-l>", "<cmd>bnext<cr>", desc = "Next Buffer"},
-			{"[b", "<cmd>bprevious<cr>", desc = "Prev Buffer"},
-			{"]b", "<cmd>bnext<cr>", desc = "Next Buffer"},
-			{"<leader>bd", bufremove, desc = "Delete Buffer"},
-			{"<leader>bD", "<cmd>:bd<cr>", desc = "Delete Buffer and Window"},
-		},
+		'olimorris/onedarkpro.nvim',
+		priority = 1000,
 	},
 	{
-		'folke/which-key.nvim',
-		keys = {
-			{
-				"<leader>?",
-				function()
-					require("which-key").show({ global = true })
-				end,
-				{}
-			}
-		},
+		'xero/miasma.nvim',
+		priority = 1000,
 	},
-	{'profesorpaiche/toytiza.nvim'},
 	{
-		'natecraddock/workspaces.nvim',
-		keys = {
-			{"<S-w>", ":WorkspacesOpen "}
-		}
+		'vague2k/vague.nvim',
+		priority = 1000,
 	},
-	{'olimorris/onedarkpro.nvim'},
-	{'xero/miasma.nvim'},
-	{'vague2k/vague.nvim'},
 	{
 		'cdmill/neomodern.nvim',
+		priority = 1000,
 		opts = {
 			style = "darkforest",
 		}
 	},
-	{'echasnovski/mini.nvim'},
 	{
-		'MeanderingProgrammer/render-markdown.nvim',
-		opts = {},
-		after = { 'nvim-treesitter'},
-		requires = { 
-			{'echasnovski/mini.nvim',
-			opt = true, -- if you use the mini.nvim suite}
-		    -- requires = { 'echasnovski/mini.icons', opt = true }, -- if you use standalone mini plugins
-		    -- requires = { 'nvim-tree/nvim-web-devicons', opt = true }, -- if you prefer nvim-web-devicons
-			config = function()
-				require('render-markdown').setup({})
-			end}
-		},
+		'comfysage/evergarden',
+		priority = 1000
+	},
+	
+	{
+		"eldritch-theme/eldritch.nvim",
+		priority = 1000,
 	},
 	{
-		'folke/noice.nvim',
-		opts = {},
-		dependencies = {
-			{"MunifTanjim/nui.nvim"},
-			{
-				"rcarriga/nvim-notify",
-				opts = {
-					background_colour = "#000000",
-				}
-			},
-		}
+		"2giosangmitom/nightfall.nvim",
+		priority = 1000,
 	},
-	{'comfysage/evergarden'},
 	{
-		"lukas-reineke/indent-blankline.nvim",
-		name = "ibl",
-		opts = {},
+		"oneslash/helix-nvim",
+		priority = 1000,
 	},
-	{"eldritch-theme/eldritch.nvim"},
-	{"2giosangmitom/nightfall.nvim"},
-	{"oneslash/helix-nvim"},
-	{"lunarvim/horizon.nvim"},
-	{"lunarvim/synthwave84.nvim"},
-	{"haystackandroid/snow"},
-	{"numToStr/Comment.nvim", opts = {}},
-	{"kchmck/vim-coffee-script"},
-	{'fcancelinha/nordern.nvim'},
+	{
+		"lunarvim/horizon.nvim",
+		priority = 1000,
+	},
+	{
+		"lunarvim/synthwave84.nvim",
+		priority = 1000,
+	},
+	{
+		"haystackandroid/snow",
+		priority = 1000,
+	},
+	{
+		"kchmck/vim-coffee-script",
+		priority = 1000,
+	},
+	{
+		'fcancelinha/nordern.nvim',
+		priority = 1000,
+	},
 	{
 		'franbach/miramare',
 		config = function()
 			vim.g.miramare_enable_italic = 1
 		end
 	},
-	{'sho-87/kanagawa-paper.nvim'},
-	{'gmr458/cold.nvim'},
-	{'lunacookies/vim-substrata'},
+	{
+		'sho-87/kanagawa-paper.nvim',
+		priority = 1000,
+	},
+	{
+		'gmr458/cold.nvim',
+		priority = 1000,
+	},
+	{
+		"folke/tokyonight.nvim",
+		priority = 1000,
+	},
+	{
+		'sainnhe/sonokai',
+		priority = 1000,
+		name = 'sonokai',
+		config = function()
+			vim.g.sonokai_style = 'andromeda'
+			vim.g.sonokai_better_performance = 1
+		end
+	},
+	{
+		'sainnhe/gruvbox-material',
+		priority = 1000,
+		name = 'gruvbox-material',
+		config = function()
+			vim.g.gruvbox_material_deisable_italic_comment = 1
+			vim.g.gruvbox_material_foreground = 'material'
+			vim.g.gruvbox_material_background = 'soft'
+			vim.g.gruvbox_material_better_performance = 1
+		end,
+	},
+	{
+		'sainnhe/everforest',
+		priority = 1000,
+		name = 'everforest',
+		config = function()
+			vim.g.everfoest_background = 'medium'
+		end
+	},
+	{
+		'rebelot/kanagawa.nvim',
+		priority = 1000,
+	},
 }

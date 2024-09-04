@@ -20,6 +20,11 @@ vim.opt.rtp:prepend(lazypath)
 -- This is also a good place to setup other settings (vim.opt)
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
+
+vim.wo.rnu = true
+vim.wo.number = true
+vim.wo.wrap = true
+
 -- Setup lazy.nvim
 require("lazy").setup({
 	spec = require("config.plugins"),	-- Configure any other settings here. See the documentation for more details.
