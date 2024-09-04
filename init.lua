@@ -1,2 +1,4 @@
 vim.filetype.add({ extension = { templ = "templ" } })
-require("miniapple.remap")
+
+require("config.lazy")
+require("current-theme")
