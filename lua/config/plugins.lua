@@ -271,7 +271,12 @@ return {
 			}
 		},
 	},
-	{"mbbill/undotree"},
+	{
+		"mbbill/undotree",
+		keys = {
+			{"<leader>rd", ":UndotreeToggle<CR>", desc="Toggle undo tree"}
+		},
+	},
 	{
 		"epwalsh/obsidian.nvim",
 		dependencies = {
