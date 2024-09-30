@@ -42,6 +42,7 @@ end
 
 
 return {
+	{},
 	{
 		"/ggandor/leap.nvim",
 		opts = {},
@@ -323,6 +324,12 @@ return {
 				return out	
 			end,
 		},
+		keys = {
+			{"<leader>ot", ":ObsidianTemplate<CR>", desc="Open Templates"},
+			{"<leader>od", ":ObsidianToday<CR>", desc="Open Today's daily"},
+			{"<leader>ob", ":ObsidianBacklinks<CR>", desc="Open backlinks"},
+			{"<leader>oo", ":ObsidianOpen<CR>", desc="Open in obsidian"}
+		}
 	},
 	{
 		"nvim-telescope/telescope.nvim",
