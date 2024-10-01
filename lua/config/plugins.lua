@@ -42,10 +42,21 @@ end
 
 
 return {
-	{},
 	{
-		"/ggandor/leap.nvim",
+		"stevearc/oil.nvim",
+		lazy = false,
 		opts = {},
+		keys = {
+			{"-", "<CMD>Oil<CR>", desc = "Open parent directory"},
+		},
+	},
+	{
+		"ggandor/leap.nvim",
+		lazy = false,
+		opts = {},
+		config = function()
+			require('leap').create_default_mappings()
+		end,
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
@@ -123,13 +134,6 @@ return {
 			}
 		},
 	},
-	{'profesorpaiche/toytiza.nvim'},
-	{
-		'natecraddock/workspaces.nvim',
-		keys = {
-			{"<S-w>", ":WorkspacesOpen "}
-		}
-	},
 	{
 		'folke/todo-comments.nvim',
 		opts = {
@@ -157,7 +161,9 @@ return {
 },
 	{
 		'andweeb/presence.nvim',
-		opts = {}
+		opts = {
+			log_level = "info",
+		}
 	},
 	{
 		"nvim-lualine/lualine.nvim",
@@ -252,13 +258,9 @@ return {
 			{"<leader>z", desc="Zen mode", function()
 				require("zen-mode").toggle()
 				if zen == false then
-					vim.wo.rnu = true
-					vim.wo.number = true
 					vim.wo.wrap = false
 					zen = true
 				else
-					vim.wo.rnu = true
-					vim.wo.number = true
 					vim.wo.wrap = true
 					zen = false
 				end
@@ -358,7 +360,6 @@ return {
 			})
 
 			telescope.load_extension('themes')
-			telescope.load_extension('workspaces')
 
 			vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 			vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
@@ -370,24 +371,6 @@ return {
 			-- external
 			vim.keymap.set("n", "<leader>ft", ":TodoTelescope<CR>")
 		end,
-	},
-	{
-		'kdheepak/lazygit.nvim',
-		dependencies = {
-			{"nvim-lua/plenary.nvim"},
-			{"nvim-lua/telescope.nvim"},
-		},
-		config = function()
-			require("telescope").load_extension("lazygit")
-
-			vim.api.nvim_create_autocmd('BufEnter',  { command = ":lua require('lazygit.utils').project_root_dir()"}) 
-		end,
-		keys = {
-			{'<leader>gt', ':lua require("telescope").extensions.lazygit.lazygit()<CR>'},
-			{'<leader>gg', ':LazyGit<CR>'},
-			{'<leader>gf', ':LazyGitFilter<CR>'},
-			{'<leader>gc', ':LazyGitFilterCurrentFile<CR>'},
-		},
 	},
 	{
 		'nvim-neo-tree/neo-tree.nvim',
@@ -431,194 +414,5 @@ return {
 			vim.keymap.set("n", "<leader>pv", ":Neotree source=filesystem reveal=true position=current toggle=true<CR>")
 		end,
 	},
-
-	--- Themes
-	{
-		"Shatur/neovim-ayu",
-		priority = 1000,
-		name = "ayu",
-		opts = {
-			mirage = true
-		}
-	},
-	{
-		"wadackel/vim-dogrun",
-		priority = 1000,
-	},
-	{
-		"lifepillar/vim-solarized8",
-		priority = 1000,
-	},
-	{
-		"rose-pine/neovim",
-		name = "rose-pine",
-		priority = 1000,
-	},
-	{
-		"ellisonleao/gruvbox.nvim",
-		priority = 1000,
-		opts = {
-			contrast = "medium",
-			overrides = {
-				RenderMarkdownH1 = { link = "GruvboxRed" },
-				RenderMarkdownH1Bg = { link = "GruvboxRed" },
-				RenderMarkdownH2 = { link = "GruvboxOrange" },
-				RenderMarkdownH2Bg = { link = "GruvboxOrange" },
-				RenderMarkdownH3 = { link = "GruvboxYellow" },
-				RenderMarkdownH3Bg = { link = "GruvboxYellow" },
-				RenderMarkdownH4 = { link = "GruvboxAqua" },
-				RenderMarkdownH4Bg = { link = "GruvboxAqua" },
-				RenderMarkdownH5 = { link = "GruvboxBlue" },
-				RenderMarkdownH5Bg = { link = "GruvboxBlue" },
-				RenderMarkdownH6 = { link = "GruvboxPurple" },
-				RenderMarkdownH6Bg = { link = "GruvboxPurple" },
-			},
-		}
-	},
-	{
-		"ribru17/bamboo.nvim",
-		priority = 1000,
-	},
-	{
-		"oxfist/night-owl.nvim",
-		priority = 1000,
-	},
-	{
-		"sainnhe/edge",
-		priority = 1000,
-		config = function()
-			vim.g.edge_style = 'aura'
-			vim.g.edge_better_performance = 1
-		end
-	},
-	{
-		"AlexvZyl/nordic.nvim",
-		priority = 1000,
-	},
-	{
-		"junegunn/seoul256.vim",
-		priority = 1000,
-	},
-	{
-		'cocopon/iceberg.vim',
-		priority = 1000,
-	},
-	{
-		'folke/trouble.nvim',
-		opts = {},
-		keys = {
-			{"<leader>xx", ":Trouble diagnostics toggle<CR>"},
-			{"<leader>xt", ":Trouble todo<CR>"},
-		},
-	},
-	{
-		'nyoom-engineering/oxocarbon.nvim',
-		priority = 1000,
-	},
-	{
-		'olimorris/onedarkpro.nvim',
-		priority = 1000,
-	},
-	{
-		'xero/miasma.nvim',
-		priority = 1000,
-	},
-	{
-		'vague2k/vague.nvim',
-		priority = 1000,
-	},
-	{
-		'cdmill/neomodern.nvim',
-		priority = 1000,
-		opts = {
-			style = "darkforest",
-		}
-	},
-	{
-		'comfysage/evergarden',
-		priority = 1000
-	},
-	
-	{
-		"eldritch-theme/eldritch.nvim",
-		priority = 1000,
-	},
-	{
-		"2giosangmitom/nightfall.nvim",
-		priority = 1000,
-	},
-	{
-		"oneslash/helix-nvim",
-		priority = 1000,
-	},
-	{
-		"lunarvim/horizon.nvim",
-		priority = 1000,
-	},
-	{
-		"lunarvim/synthwave84.nvim",
-		priority = 1000,
-	},
-	{
-		"haystackandroid/snow",
-		priority = 1000,
-	},
-	{
-		"kchmck/vim-coffee-script",
-		priority = 1000,
-	},
-	{
-		'fcancelinha/nordern.nvim',
-		priority = 1000,
-	},
-	{
-		'franbach/miramare',
-		config = function()
-			vim.g.miramare_enable_italic = 1
-		end
-	},
-	{
-		'sho-87/kanagawa-paper.nvim',
-		priority = 1000,
-	},
-	{
-		'gmr458/cold.nvim',
-		priority = 1000,
-	},
-	{
-		"folke/tokyonight.nvim",
-		priority = 1000,
-	},
-	{
-		'sainnhe/sonokai',
-		priority = 1000,
-		name = 'sonokai',
-		config = function()
-			vim.g.sonokai_style = 'andromeda'
-			vim.g.sonokai_better_performance = 1
-		end
-	},
-	{
-		'sainnhe/gruvbox-material',
-		priority = 1000,
-		name = 'gruvbox-material',
-		config = function()
-			vim.g.gruvbox_material_deisable_italic_comment = 1
-			vim.g.gruvbox_material_foreground = 'material'
-			vim.g.gruvbox_material_background = 'soft'
-			vim.g.gruvbox_material_better_performance = 1
-		end,
-	},
-	{
-		'sainnhe/everforest',
-		priority = 1000,
-		name = 'everforest',
-		config = function()
-			vim.g.everfoest_background = 'medium'
-		end
-	},
-	{
-		'rebelot/kanagawa.nvim',
-		priority = 1000,
-	},
+	require("config.colorschemes"),
 }

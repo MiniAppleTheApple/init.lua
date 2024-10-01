@@ -1,4 +1,5 @@
 return {
+	{'profesorpaiche/toytiza.nvim'},
 	{
 		"2nthony/vitesse.nvim",
 		dependencies = {
@@ -75,6 +76,19 @@ return {
 		config = function()
 			vim.g.sonokai_style = 'andromeda'
 			vim.g.sonokai_better_performance = 1
+		end
+	},
+	{
+		'sainnhe/gruvbox-material',
+		priority = 1000,
+		name = 'gruvbox-material',
+		config = function()
+			vim.g.gruvbox_material_better_performance = 1
+			vim.g.gruvbox_material_foreground = 'material'
+			vim.g.gruvbox_material_background = 'medium'
+			vim.g.gruvbox_material_enable_italic = 1
+			vim.g.gruvbox_material_enable_bold = 1
+			vim.g.gruvbox_material_cursor = 'blue'
 		end
 	},
 	{
