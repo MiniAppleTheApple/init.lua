@@ -43,6 +43,87 @@ end
 
 return {
 	{
+	    "ThePrimeagen/harpoon",
+	    branch = "harpoon2",
+	    dependencies = { "nvim-lua/plenary.nvim" },
+	    lazy = false,
+	    config = function()
+
+		local harpoon = require("harpoon")
+
+		-- REQUIRED
+		harpoon:setup()
+		-- REQUIRED
+		vim.keymap.set("n", "<leader>ha", function() harpoon:list():add() end)
+		vim.keymap.set("n", "<leader>he", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+
+		vim.keymap.set("n", "<C-h>", function() harpoon:list():select(1) end)
+		vim.keymap.set("n", "<C-t>", function() harpoon:list():select(2) end)
+		vim.keymap.set("n", "<C-n>", function() harpoon:list():select(3) end)
+		vim.keymap.set("n", "<C-s>", function() harpoon:list():select(4) end)
+
+		-- Toggle previous & next buffers stored within Harpoon list
+		vim.keymap.set("n", "<leader>hp", function() harpoon:list():prev() end)
+		vim.keymap.set("n", "<leader>hn", function() harpoon:list():next() end)
+
+		-- basic telescope configuration
+		local conf = require("telescope.config").values
+		local function toggle_telescope(harpoon_files)
+			local file_paths = {}
+			for _, item in ipairs(harpoon_files.items) do
+				table.insert(file_paths, item.value)
+			end
+
+			require("telescope.pickers").new({}, {
+				prompt_title = "Harpoon",
+				finder = require("telescope.finders").new_table({
+					results = file_paths,
+				}),
+				previewer = conf.file_previewer({}),
+				sorter = conf.generic_sorter({}),
+			}):find()
+		end
+
+		vim.keymap.set("n", "<leader>fe", function() toggle_telescope(harpoon:list()) end,
+		{ desc = "Open harpoon window" })
+	end,
+},
+	{
+		"kylechui/nvim-surround",
+		version = "*", -- Use for stability; omit to use `main` branch for the latest features
+		event = "VeryLazy",
+		config = function()
+			require("nvim-surround").setup({})
+		end,
+	},
+	{
+		"folke/trouble.nvim",
+		opts = {},
+		cmd = "Trouble",
+		keys = {
+			{
+				"<leader>xt",
+				"<cmd>Trouble todo<cr>",
+				desc = "Todos",
+			},
+			{
+				"<leader>xx",
+				"<cmd>Trouble diagnostics toggle<cr>",
+				desc = "Diagnostics (Trouble)",
+			},
+						{
+				"<leader>cl",
+				"<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+				desc = "LSP Definitions / references / ... (Trouble)",
+			},
+			{
+				"<leader>xQ",
+				"<cmd>Trouble qflist toggle<cr>",
+				desc = "Quickfix List (Trouble)",
+			},
+		},
+	},
+	{
 		"stevearc/oil.nvim",
 		lazy = false,
 		opts = {},
@@ -161,9 +242,7 @@ return {
 },
 	{
 		'andweeb/presence.nvim',
-		opts = {
-			log_level = "info",
-		}
+		opts = {}
 	},
 	{
 		"nvim-lualine/lualine.nvim",
@@ -183,6 +262,7 @@ return {
 	},
 	{
 		"VonHeikemen/lsp-zero.nvim",
+		lazy = false,
 		dependencies = {
 			-- LSP Support
 			"williamboman/mason.nvim",
@@ -225,6 +305,26 @@ return {
 
 			require('mason').setup({})
 			require('mason-lspconfig').setup({
+				ensure_installed = {
+					"lua_ls",
+					"rust_analyzer",
+					"gopls",
+					"templ",
+					"html",
+					"cssls",
+					"emmet_language_server",
+					"htmx",
+					"tailwindcss",
+					"ts_ls",
+					"pylsp",
+					"clangd",
+					"yamlls",
+					"jsonls",
+					"eslint",
+					"sqlls",
+					"intelephense",
+					"nim_langserver",
+				},
 				handlers = {
 					function(server_name)
 						require('lspconfig')[server_name].setup({})
@@ -233,7 +333,7 @@ return {
 			})
 
 			local cmp = require('cmp')
-
+			
 			cmp.setup({
 				sources = {
 					{name = 'nvim_lsp'},
@@ -250,6 +350,44 @@ return {
 			local lspconfig = require("lspconfig")
 
 			vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, {})
+
+			local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+			require 'lspconfig'.intelephense.setup {
+				capabilities = capabilities,
+				on_attach = lsp_attach,
+				settings = {
+					intelephense = {
+						-- possible values: stubs.txt
+						stubs = {
+							'Core',
+							'Reflection',
+							'SPL',
+							'SimpleXML',
+							'ctype',
+							'date',
+							'exif',
+							'filter',
+							'hash',
+							'imagick',
+							'json',
+							'pcre',
+							'random',
+							'standard',
+						}
+					}
+				}
+			}
+
+
+			require'lspconfig'.phpactor.setup{
+				capabilities = capabilities,
+				on_attach = lsp_attach,
+				init_options = {
+					["language_server_phpstan.enabled"] = false,
+					["language_server_psalm.enabled"] = false,
+				}
+			}
 		end
 	},
 	{
@@ -378,7 +516,6 @@ return {
 			{"nvim-lua/plenary.nvim"},
 			{"nvim-tree/nvim-web-devicons"}, -- not strictly required, but recommended
 			{"MunifTanjim/nui.nvim"},
-			{"3rd/image.nvim"},
 			{
 				's1n7ax/nvim-window-picker',
 				version = '2.*',
