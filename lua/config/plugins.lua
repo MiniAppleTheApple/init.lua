@@ -43,6 +43,56 @@ end
 
 return {
 	{
+		"lewis6991/gitsigns.nvim",
+		lazy = false,
+		opts = {
+			on_attach = function(bufnr)
+				local gitsigns = require('gitsigns')
+
+				local function map(mode, l, r, opts)
+					opts = opts or {}
+					opts.buffer = bufnr
+					vim.keymap.set(mode, l, r, opts)
+				end
+
+				-- Navigation
+				map('n', ']c', function()
+					if vim.wo.diff then
+						vim.cmd.normal({']c', bang = true})
+					else
+						gitsigns.nav_hunk('next')
+					end
+				end)
+
+				map('n', '[c', function()
+					if vim.wo.diff then
+						vim.cmd.normal({'[c', bang = true})
+					else
+						gitsigns.nav_hunk('prev')
+					end
+				end)
+
+				-- Actions
+				map('n', '<leader>hs', gitsigns.stage_hunk)
+				map('n', '<leader>hr', gitsigns.reset_hunk)
+				map('v', '<leader>hs', function() gitsigns.stage_hunk {vim.fn.line('.'), vim.fn.line('v')} end)
+				map('v', '<leader>hr', function() gitsigns.reset_hunk {vim.fn.line('.'), vim.fn.line('v')} end)
+				map('n', '<leader>hS', gitsigns.stage_buffer)
+				map('n', '<leader>hu', gitsigns.undo_stage_hunk)
+				map('n', '<leader>hR', gitsigns.reset_buffer)
+				map('n', '<leader>hp', gitsigns.preview_hunk)
+				map('n', '<leader>hb', function() gitsigns.blame_line{full=true} end)
+				map('n', '<leader>tb', gitsigns.toggle_current_line_blame)
+				map('n', '<leader>hd', gitsigns.diffthis)
+				map('n', '<leader>hD', function() gitsigns.diffthis('~') end)
+				map('n', '<leader>td', gitsigns.toggle_deleted)
+
+				-- Text object
+				map({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
+			end
+		},
+	},
+	{
 	    "ThePrimeagen/harpoon",
 	    branch = "harpoon2",
 	    dependencies = { "nvim-lua/plenary.nvim" },
@@ -258,6 +308,16 @@ return {
 					enable = true,
 				}
 			})
+
+			local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+			parser_config.blade = {
+				install_info = {
+					url = "https://github.com/EmranMR/tree-sitter-blade",
+					files = { "src/parser.c" },
+					branch = "main",
+				},
+				filetype = "blade",
+			}
 		end
 	},
 	{
@@ -324,6 +384,7 @@ return {
 					"sqlls",
 					"intelephense",
 					"nim_langserver",
+					"phpactor",
 				},
 				handlers = {
 					function(server_name)
@@ -388,6 +449,41 @@ return {
 					["language_server_psalm.enabled"] = false,
 				}
 			}
+
+			require'lspconfig'.emmet_language_server.setup {
+				capabilities = capabilities,
+				on_attach = lsp_attach,
+				filetypes = {
+					"astro",
+					"css",
+					"eruby",
+					"html",
+					"htmldjango",
+					"javascriptreact",
+					"less",
+					"php",
+					"pug",
+					"sass",
+					"scss",
+					"svelte",
+					"typescriptreact",
+					"vue",
+				},
+			}
+
+			require 'lspconfig'.lua_ls.setup {
+				on_attach = lsp_attach,
+				settings = {
+					Lua = {
+						diagnostics = {
+							globals = { 'vim' }
+						},
+						completion = {
+							callSnippet = "Replace"
+						}
+					}
+				}
+			}
 		end
 	},
 	{
@@ -431,12 +527,12 @@ return {
 					name = "notes",
 					path = "~/project/notes",
 					overrides = {
-						notes_subdir = "021 Daily",
+						notes_subdir = "daily",
 					},
 				},
 			},
 			templates = {
-				folder = "070 Templates",
+				folder = "templates",
 				date_format = "%Y-%m-%d-%a",
 				time_format = "%H:%M",
 			},
@@ -482,6 +578,7 @@ return {
 		dependencies = {
 			{"nvim-lua/plenary.nvim"},
 			{"andrew-george/telescope-themes"},
+			'apdot/doodle', -- Ensure doodle is a dependency
 		},
 		config = function()
 
@@ -497,6 +594,8 @@ return {
 				file_ignore_patterns = { "node_modules" },
 			})
 
+
+
 			telescope.load_extension('themes')
 
 			vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
@@ -510,46 +609,6 @@ return {
 			vim.keymap.set("n", "<leader>ft", ":TodoTelescope<CR>")
 		end,
 	},
-	{
-		'nvim-neo-tree/neo-tree.nvim',
-		dependencies = {
-			{"nvim-lua/plenary.nvim"},
-			{"nvim-tree/nvim-web-devicons"}, -- not strictly required, but recommended
-			{"MunifTanjim/nui.nvim"},
-			{
-				's1n7ax/nvim-window-picker',
-				version = '2.*',
-				config = function()
-					require 'window-picker'.setup({
-						filter_rules = {
-							include_current_win = false,
-							autoselect_one = true,
-							-- filter using buffer options
-							bo = {
-								-- if the file type is one of following, the window will be ignored
-								filetype = { 'neo-tree', "neo-tree-popup", "notify" },
-								-- if the buffer type is one of following, the window will be ignored
-								buftype = { 'terminal', "quickfix" },
-							},
-						},
-					})
-				end,
-			},
-		},
-		config = function()
-			vim.fn.sign_define("DiagnosticSignError",
-				{text = " ", texthl = "DiagnosticSignError"})
-			vim.fn.sign_define("DiagnosticSignWarn",
-				{text = " ", texthl = "DiagnosticSignWarn"})
-			vim.fn.sign_define("DiagnosticSignInfo",
-				{text = " ", texthl = "DiagnosticSignInfo"})
-			vim.fn.sign_define("DiagnosticSignHint",
-				{text = "󰌵", texthl = "DiagnosticSignHint"})
-
-			-- require("neo-tree").paste_default_config()
-			vim.keymap.set("n", "<leader>t", ":Neotree source=filesystem reveal=true position=left toggle=true<CR>")
-			vim.keymap.set("n", "<leader>pv", ":Neotree source=filesystem reveal=true position=current toggle=true<CR>")
-		end,
-	},
+	
 	require("config.colorschemes"),
 }
