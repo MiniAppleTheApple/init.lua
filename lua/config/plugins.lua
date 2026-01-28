@@ -1,7 +1,7 @@
 function bufremove(buf)
 	buf = buf or 0
 	buf = buf == 0 and vim.api.nvim_get_current_buf() or buf
-
+	
 	if vim.bo.modified then
 		local choice = vim.fn.confirm(("Save changes to %q?"):format(vim.fn.bufname()), "&Yes\n&No\n&Cancel")
 		if choice == 0 or choice == 3 then -- 0 for <Esc>/<C-c> and 3 for Cancel
@@ -182,7 +182,7 @@ return {
 		},
 	},
 	{
-		"ggandor/leap.nvim",
+		"https://codeberg.org/andyg/leap.nvim",
 		lazy = false,
 		opts = {},
 		config = function()
@@ -515,6 +515,7 @@ return {
 	},
 	{
 		"epwalsh/obsidian.nvim",
+		ft = "markdown",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 		},
@@ -542,24 +543,67 @@ return {
 			follow_url_func = function(url)
 				vim.fn.jobstart({"xdg-open", url})
 			end,
+note_path_func = function(spec)
+    -- This is equivalent to the default behavior.
+    local path = spec.dir / spec.title:lower():gsub(" ", "-")
+    return path:with_suffix(".md")
+end,
 			note_frontmatter_func = function(note)
-				local out = {tags = note.tags}
-				local v = string.find(note.path.filename, "%d%d%d%d%-%d%d%-%d%d") 
-				local add_zettel = v == nil
-				for _, v in ipairs(out.tags) do
-					if v == "zettel" then
-						add_zettel = false
-					end
-				end
+				local Path = require("obsidian.path")
 				
-				if add_zettel then
-					out.tags[#out.tags + 1] = "zettel"
+				local authors_dir = Path.new("authors/"):resolve()
+
+				if authors_dir:is_parent_of(note.path) then
+					local out = {id = note.id, tags = note.tags, aliases = note.aliases} 
+					return out
 				end
 
-				if note.metadata ~= nil and not vim.tbl_isempty(note.metadata) then
+				local books_dir = Path.new("books/"):resolve()
+
+				if books_dir:is_parent_of(note.path) then
+					print("hello")
+					local out = {
+						id = note.id,
+						tags = note.tags,
+						aliases = note.aliases,
+						["ISBN"] = "",
+						authors = {},
+					} 
+					if note.metadata == nil then
+						return out
+					end
+
 					for k, v in pairs(note.metadata) do
 						out[k] = v
 					end
+
+					return out
+				end
+				function has_note_tag()
+					for _, v in ipairs(note.tags) do
+						if v == "note" then
+							return false 
+						end
+					end
+					return true
+				end
+
+				local out = {id = note.id, tags = note.tags, aliases = note.aliases} 
+				
+				local is_daily = string.find(note.path.filename, "%d%d%d%d%-%d%d%-%d%d") == nil
+				
+				local add_note = is_daily and has_note_tag()
+				
+				if add_note then
+					out.tags[#out.tags + 1] = "note"
+				end
+
+				if note.metadata == nil then
+					return out
+				end
+
+				for k, v in pairs(note.metadata) do
+					out[k] = v
 				end
 
 				return out	
@@ -570,7 +614,16 @@ return {
 			{"<leader>od", ":ObsidianToday<CR>", desc="Open Today's daily"},
 			{"<leader>ob", ":ObsidianBacklinks<CR>", desc="Open backlinks"},
 			{"<leader>oo", ":ObsidianOpen<CR>", desc="Open in obsidian"}
-		}
+		},
+		mappings = {
+			["of"] = {
+				action = function()
+					return require("obsidian").util.gf_passthrough()
+				end,
+				opts = { noremap = false, expr = true, buffer = true },
+			},
+		},
+
 	},
 	{
 		"nvim-telescope/telescope.nvim",
