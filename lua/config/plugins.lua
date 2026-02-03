@@ -186,7 +186,8 @@ return {
 		lazy = false,
 		opts = {},
 		config = function()
-			require('leap').create_default_mappings()
+			vim.keymap.set({'n', 'x', 'o'}, 's', '<Plug>(leap)')
+			vim.keymap.set('n',             'S', '<Plug>(leap-from-window)')
 		end,
 	},
 	{
@@ -303,21 +304,11 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		config = function()
-			require("nvim-treesitter.configs").setup({
+			require("nvim-treesitter").setup({
 				highlight = {
 					enable = true,
 				}
 			})
-
-			local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
-			parser_config.blade = {
-				install_info = {
-					url = "https://github.com/EmranMR/tree-sitter-blade",
-					files = { "src/parser.c" },
-					branch = "main",
-				},
-				filetype = "blade",
-			}
 		end
 	},
 	{
@@ -408,13 +399,11 @@ return {
 				mapping = cmp.mapping.preset.insert({}),
 			})
 
-			local lspconfig = require("lspconfig")
-
 			vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, {})
 
 			local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-			require 'lspconfig'.intelephense.setup {
+			vim.lsp.config.intelephense = {
 				capabilities = capabilities,
 				on_attach = lsp_attach,
 				settings = {
@@ -441,7 +430,7 @@ return {
 			}
 
 
-			require'lspconfig'.phpactor.setup{
+			vim.lsp.config.phpactor = {
 				capabilities = capabilities,
 				on_attach = lsp_attach,
 				init_options = {
@@ -450,7 +439,7 @@ return {
 				}
 			}
 
-			require'lspconfig'.emmet_language_server.setup {
+			vim.lsp.config.emmet_language_server = {
 				capabilities = capabilities,
 				on_attach = lsp_attach,
 				filetypes = {
@@ -471,7 +460,7 @@ return {
 				},
 			}
 
-			require 'lspconfig'.lua_ls.setup {
+			vim.lsp.config.lua_ls = {
 				on_attach = lsp_attach,
 				settings = {
 					Lua = {
@@ -528,12 +517,12 @@ return {
 					name = "notes",
 					path = "~/project/notes",
 					overrides = {
-						notes_subdir = "daily",
+						notes_subdir = "dailies",
 					},
 				},
 			},
 			templates = {
-				folder = "templates",
+				folder = "+/templates",
 				date_format = "%Y-%m-%d-%a",
 				time_format = "%H:%M",
 			},
